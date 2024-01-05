@@ -70,53 +70,53 @@ print(minimum_cnt)
 
 # 결과적으로 두 코드 중 어느 것을 선택할지는 문제의 조건과 목적에 따라 다르게 선택할 수 있습니다.
 
-# import sys
+import sys
 
-# def retouch_cnt(board, start_color):
-#     cnt = 0
+def retouch_cnt(board, start_color):
+    cnt = 0
 
-#     for a in range(8):
-#         for b in range(8):
-#             row = a
-#             col = b
-#             current_color = board[row][col]
+    for a in range(8):
+        for b in range(8):
+            row = a
+            col = b
+            current_color = board[row][col]
 
-#             if (row + col) % 2 == 0 and current_color != start_color:
-#                 cnt += 1
-#             elif (row + col) % 2 == 1 and current_color == start_color:
-#                 cnt += 1
+            if (row + col) % 2 == 0 and current_color != start_color:
+                cnt += 1
+            elif (row + col) % 2 == 1 and current_color == start_color:
+                cnt += 1
 
-#     return cnt      
+    return cnt      
         
 
 
-# n, m = map(int, input().split())
+n, m = map(int, input().split())
 
-# originalBoard = []
+originalBoard = []
 
-# #입력 부분
-# for _ in range(n):
-#     user_in = sys.stdin.readline().rstrip()
-#     line = list(user_in)
-#     originalBoard.append(line)
+#입력 부분
+for _ in range(n):
+    user_in = sys.stdin.readline().rstrip()
+    line = list(user_in)
+    originalBoard.append(line)
 
-# #lINE = list(one_line) 과 LINE = list(map(str, one_line.split()))이 왜 차이가 나는거지?
-# #첫 번째는 분할되어서 들어가지고, 두 번째는 분할이 안되네...?
-# #두 번째가 분할이 안되면 시발 왜지? 의도된 거랑 정반대구나...
+#lINE = list(one_line) 과 LINE = list(map(str, one_line.split()))이 왜 차이가 나는거지?
+#첫 번째는 분할되어서 들어가지고, 두 번째는 분할이 안되네...?
+#두 번째가 분할이 안되면 시발 왜지? 의도된 거랑 정반대구나...
 
-# minimum_cnt = 65    
-# #보드 자르는 부분
-# for x in range(n - 7):
-#     for y in range(m - 7):
-#         #x,y는 스타트 포인트
-#         sliced_board = []
-#         for a in range(x, x + 8):
-#             sliced_line = list(originalBoard[a][y : y + 8])
-#             sliced_board.append(sliced_line)
+minimum_cnt = 65    
+#보드 자르는 부분
+for x in range(n - 7):
+    for y in range(m - 7):
+        #x,y는 스타트 포인트
+        sliced_board = []
+        for a in range(x, x + 8):
+            sliced_line = list(originalBoard[a][y : y + 8])
+            sliced_board.append(sliced_line)
 
-#         color = sliced_board[0][0]
-#         count = retouch_cnt(sliced_board, color)
+        color = sliced_board[0][0]
+        count = retouch_cnt(sliced_board, color)
 
-#         if count < minimum_cnt:
-#             minimum_cnt = count
-# print(minimum_cnt)
+        if count < minimum_cnt:
+            minimum_cnt = count
+print(minimum_cnt)
