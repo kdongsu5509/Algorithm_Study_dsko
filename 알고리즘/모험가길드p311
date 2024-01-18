@@ -1,0 +1,43 @@
+def checkvalidity(start, end, last_thing):
+    if last_thing <= end - start + 1:
+        return True
+    else:
+        return False
+
+n = int(input()) #최대 100,000
+fear = list(map(int, input().split()))
+
+#여행를 떠날 수 있는 그룹 수의 최댓값을 출력
+fear.sort() # 퀵 정렬.
+
+result = 0 # 총 그룹의 수
+
+cursor = 0
+
+number = 0 # 현재 그룹에 포함된 모험가의 수
+
+for i in fear:
+    #일단 i기준으로 사람 수 넣기.
+    for j in range(cursor, cursor + i):
+        number += 1
+
+    end_num = 0
+    if cursor + number - 1> len(fear):
+        end_num = len(fear)
+    else:
+        end_num = cursor + number - 1
+
+    if checkvalidity(cursor, end_num, fear[end_num]) == True: # 아 씨발 number랑 len(Fear)중 작은 값 어캐 넣지...
+        result += 1
+        cursor += i
+        number = 0
+        # print(result, cursor)
+    else:
+        break
+
+
+print(result)
+
+#정답은 506.
+    
+
